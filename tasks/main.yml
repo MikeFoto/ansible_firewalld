@@ -1,0 +1,19 @@
+- name: install firewalld
+  yum:
+    name:   firewalld
+    state: latest
+
+- name: service firewalld
+  service:
+    name:    firewalld
+    enabled: True
+
+- firewalld:
+    port:      "{{ item.port }}/{{ item.protocol }}"
+    zone:      "{{ item.zone }}"
+    permanent: true
+    state:     enabled
+  notify:    "restart firewalld"
+  with_items:
+    - "{{ firewalld.configuration.input_tcp_ports     }}"
+    - "{{ extra_ports | default([])}}"
