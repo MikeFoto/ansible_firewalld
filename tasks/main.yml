@@ -8,7 +8,8 @@
     name:    firewalld
     enabled: True
 
-- firewalld:
+- name: Configure firewalld - defaults
+  firewalld:
     port:      "{{ item.port }}/{{ item.protocol }}"
     zone:      "{{ item.zone }}"
     permanent: true
@@ -16,4 +17,17 @@
   notify:    "restart firewalld"
   with_items:
     - "{{ firewalld.configuration.input_tcp_ports     }}"
+  when:
+    firewalld is defined and
+    firewalld.configuration is defined and 
+    firewalld.configuration.input_tcp_ports is defined
+
+- name: Configure firewalld - Extras
+  firewalld:
+    port:      "{{ item.port }}/{{ item.protocol }}"
+    zone:      "{{ item.zone }}"
+    permanent: true
+    state:     enabled
+  notify:    "restart firewalld"
+  with_items:
     - "{{ extra_ports | default([])}}"
