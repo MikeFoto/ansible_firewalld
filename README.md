@@ -2,9 +2,19 @@
 
 # Usage
 
-Replace the defaults in defaults/main.yml, or provide variables definition by other way ( group_var, command line arguments, .... )
+Define the Configuration hash some place . Check Examples at defaults/main.yml.ex
 
-also there is one extra variable to allow the role to be more flexible
+## Configuration Capabilities
+
+```yaml
+firewalld:
+  configuration:
+    input_ports:               # list of zones/protocols/ports to open
+      - { zone: "public", protocol: "tcp", port: "22"}
+
+```
+
+Also there is one extra variable to allow the role to be more flexible
 
 ```
 - hosts:

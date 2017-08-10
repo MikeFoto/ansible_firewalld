@@ -16,11 +16,11 @@
     state:     enabled
   notify:    "restart firewalld"
   with_items:
-    - "{{ firewalld.configuration.input_tcp_ports     }}"
+    - "{{ firewalld.configuration.input_ports     }}"
   when:
     firewalld is defined and
-    firewalld.configuration is defined and 
-    firewalld.configuration.input_tcp_ports is defined
+    firewalld.configuration is defined and
+    firewalld.configuration.input_ports is defined
 
 - name: Configure firewalld - Extras
   firewalld:
