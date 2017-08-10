@@ -26,4 +26,4 @@ MIT
 
 # Author Information
 
-Created by Miguel Rodrigues.
+Created by Miguel Rodrigues
