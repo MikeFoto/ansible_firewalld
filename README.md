@@ -16,7 +16,7 @@ firewalld:
 
 Also there is one extra variable to allow the role to be more flexible
 
-```
+```yaml
 - hosts:
     - some_group
   roles:
