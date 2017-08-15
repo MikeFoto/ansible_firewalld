@@ -11,6 +11,11 @@ firewalld:
   configuration:
     input_ports:               # list of zones/protocols/ports to open
       - { zone: "public", protocol: "tcp", port: "22"}
+     extra_ports :
+       - { zone: "public", protocol: "tcp", port: "2377"}
+       - { zone: "public", protocol: "tcp", port: "7946"}
+       - { zone: "public", protocol: "udp", port: "7946"}
+       - { zone: "public", protocol: "udp", port: "4789"}
 
 ```
 
@@ -20,14 +25,7 @@ Also there is one extra variable to allow the role to be more flexible
 - hosts:
     - some_group
   roles:
-     - { role: firewalld,
-         extra_ports : [
-           { zone: "public", protocol: "tcp", port: "2377"},
-           { zone: "public", protocol: "tcp", port: "7946"},
-           { zone: "public", protocol: "udp", port: "7946"},
-           { zone: "public", protocol: "udp", port: "4789"}
-         ]
-        }
+     - { role: firewalld }
 ```
 
 # License
