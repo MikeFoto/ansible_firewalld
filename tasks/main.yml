@@ -30,4 +30,8 @@
     state:     enabled
   notify:    "restart firewalld"
   with_items:
-    - "{{ extra_ports | default([])}}"
+    - "{{ firewalld.configuration.extra_ports }}"
+  when:
+    firewalld is defined and
+    firewalld.configuration is defined and
+    firewalld.configuration.extra_ports is defined
