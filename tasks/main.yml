@@ -12,6 +12,7 @@
   firewalld:
     port:      "{{ item.port }}/{{ item.protocol }}"
     zone:      "{{ item.zone }}"
+    source:    "{{ item.source | default('0.0.0.0/0')}}"
     permanent: true
     state:     enabled
   notify:    "restart firewalld"
@@ -26,6 +27,7 @@
   firewalld:
     port:      "{{ item.port }}/{{ item.protocol }}"
     zone:      "{{ item.zone }}"
+    source:    "{{ item.source | default('0.0.0.0/0')}}"
     permanent: true
     state:     enabled
   notify:    "restart firewalld"
