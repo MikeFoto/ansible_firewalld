@@ -35,7 +35,7 @@ Also there is one extra variable to allow the role to be more flexible
 
 # License
 
-MIT
+GNU GPLv3 
 
 # Author Information
 
